@@ -66,4 +66,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/cvilla714/calculator-react/blob/development/LICENSE) licensed.
+This project is [MIT](https://github.com/cvilla714/bookstore-react-redux/blob/first-milestone/LICENSE) licensed.
