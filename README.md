@@ -40,7 +40,7 @@
 
 ## Authors
 
-👤 **Kevin**
+👤 **Kevin Cotrina**
 
 - Github: [@kcotrinam](https://github.com/kcotrinam)
 - Twitter: [@KevinCot12](https://twitter.com/KevinCot12)
