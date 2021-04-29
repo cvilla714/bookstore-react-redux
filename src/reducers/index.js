@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import bookReducer from './book';
 
-const allReducers = () => combineReducers({
+const allReducers = combineReducers({
   book: bookReducer,
 });
 
