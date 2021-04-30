@@ -10,7 +10,7 @@ const List = ({ id, name, category }) => (
 );
 
 List.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
 };
