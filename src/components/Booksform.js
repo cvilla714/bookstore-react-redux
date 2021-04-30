@@ -6,8 +6,10 @@ const Booksform = () => {
   return (
     <div>
       <form action="">
-        <input type="text" name="title" />
-        {/* <label htmlFor="title">Title</label> */}
+        <label htmlFor="title">
+          Title
+          <input type="text" id="title" name="title" />
+        </label>
         <div className="row">
           <div className="input-field">
             <select name="category">
@@ -22,6 +24,9 @@ const Booksform = () => {
             </select>
           </div>
         </div>
+        <button type="submit" className="btn-primary">
+          Add Book
+        </button>
       </form>
     </div>
   );
