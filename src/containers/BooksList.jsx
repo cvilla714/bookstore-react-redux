@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import Book from './Book';
+import Book from '../components/Book';
 
 const BooksList = ({ books }) => (
   <>
