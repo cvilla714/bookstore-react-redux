@@ -15,10 +15,8 @@ const Booksform = () => {
                 Select Book
               </option>
               {options.map((category) => (
-                <option value={category}>
+                <option value={category} key={Math.random()}>
                   {category}
-                  key=
-                  {Math.random()}
                 </option>
               ))}
             </select>
