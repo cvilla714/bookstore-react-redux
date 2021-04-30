@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import List from './List';
+import Book from './Book';
 
 const BooksList = ({ books }) => (
   <>
@@ -16,7 +16,7 @@ const BooksList = ({ books }) => (
       </thead>
       <tbody>
         {books.book.map((book) => (
-          <List id={book.id} key={book.id} name={book.name} category={book.category} />
+          <Book id={book.id} key={book.id} name={book.name} category={book.category} />
         ))}
       </tbody>
     </Table>
