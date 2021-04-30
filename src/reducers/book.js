@@ -1,4 +1,4 @@
-// import { CREATE_BOOK, DELETE_BOOK } from '../actions/types';
+import { CREATE_BOOK, DELETE_BOOK } from '../actions/types';
 
 const INITIAL_STATE = [
   {
@@ -15,10 +15,10 @@ const INITIAL_STATE = [
 
 const bookReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    // case CREATE_BOOK:
-    //   return state;
-    // case DELETE_BOOK:
-    //   return state;
+    case CREATE_BOOK:
+      return state;
+    case DELETE_BOOK:
+      return state;
     default:
       return state;
   }
