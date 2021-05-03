@@ -5,14 +5,16 @@ import App from './components/App';
 import store from './store';
 import { createBookAction } from './actions/index';
 
+const uniqid = require('uniqid');
+
 const INITIAL_STATE = [
   {
-    id: 0,
+    id: uniqid.process(),
     name: 'Harry Potter',
     category: 'Sci-fi',
   },
   {
-    id: 1,
+    id: uniqid.process(),
     name: 'Star Trek',
     category: 'Sci-fi',
   },

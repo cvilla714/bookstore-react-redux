@@ -5,7 +5,7 @@ export const createBookAction = (book) => ({
   payload: book,
 });
 
-export const deleteBookAction = (book) => ({
+export const deleteBookAction = (id) => ({
   type: DELETE_BOOK,
-  payload: book,
+  payload: id,
 });
