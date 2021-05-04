@@ -10,10 +10,7 @@ export const deleteBookAction = (id) => ({
   payload: id,
 });
 
-export const filterBook = (category, books) => ({
+export const filterBook = (category) => ({
   type: CHANGE_FILTER,
-  payload: {
-    category,
-    books,
-  },
+  payload: category,
 });
