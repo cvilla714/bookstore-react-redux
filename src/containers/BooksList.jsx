@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -6,7 +7,7 @@ import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
-const BooksList = ({ books, deleteBookAction, filterBook }) => {
+const BooksList = ({ books, deleteBookAction, filterBook, filtCategoryValue }) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -14,6 +15,13 @@ const BooksList = ({ books, deleteBookAction, filterBook }) => {
   const handleSelect = (category) => {
     console.log(category);
     filterBook(category, books);
+  };
+
+  const filteredCategory = () => {
+    if (filtCategoryValue !== 'All') {
+      return books.filter((book) => book.category === filtCategoryValue);
+    }
+    return books;
   };
   return (
     <>
@@ -26,7 +34,7 @@ const BooksList = ({ books, deleteBookAction, filterBook }) => {
           </tr>
         </thead>
         <tbody>
-          {books.book.map((book) => (
+          {filteredCategory().map((book) => (
             <Book
               id={book.id}
               key={book.id}
@@ -43,12 +51,14 @@ const BooksList = ({ books, deleteBookAction, filterBook }) => {
 };
 
 BooksList.propTypes = {
-  books: PropTypes.objectOf(Array).isRequired,
+  books: PropTypes.arrayOf(Object).isRequired,
   deleteBookAction: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
+  filtCategoryValue: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  books: state,
+  books: state.book,
+  filtCategoryValue: state.filter,
 });
 export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);
