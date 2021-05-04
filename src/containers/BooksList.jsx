@@ -10,8 +10,6 @@ import { deleteBookAction, filterBook } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
-  console.log(filterCategory);
-
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
