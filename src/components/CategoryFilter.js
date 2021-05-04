@@ -17,7 +17,7 @@ const CategoryFilter = ({ onSelect }) => {
         <option value="" disabled>
           Select Book
         </option>
-        {options.map((category) => (
+        {['All', ...options].map((category) => (
           <option value={category} key={Math.random()}>
             {category}
           </option>
