@@ -1,14 +1,13 @@
+/* eslint-disable object-curly-newline */
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
-import CategoryFilter from '../components/CategoryFilter';
+import Search from './Search';
 
-const BooksList = ({
-  books, filterCategory, deleteBookAction, filterBook,
-}) => {
+const BooksList = ({ books, filterCategory, deleteBookAction, filterBook, search }) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -19,14 +18,17 @@ const BooksList = ({
 
   const filteredBooks = () => {
     if (filterCategory !== 'All') {
-      return books.filter((book) => book.category.toUpperCase() === filterCategory.toUpperCase());
+      return books.filter((book) => book.category === filterCategory);
     }
-
+    if (search !== '') {
+      return books.filter((book) => book.name.includes(search));
+    }
     return books;
   };
 
   return (
     <>
+      <Search handleSelect={handleSelect} />
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -47,7 +49,6 @@ const BooksList = ({
           ))}
         </tbody>
       </Table>
-      <CategoryFilter onSelect={handleSelect} />
     </>
   );
 };
@@ -57,13 +58,13 @@ BooksList.propTypes = {
   deleteBookAction: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
   filterCategory: PropTypes.string.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state.book,
   filterCategory: state.filter,
+  search: state.search,
 });
 
-export default connect(mapStateToProps, { deleteBookAction, filterBook })(
-  BooksList,
-);
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);
