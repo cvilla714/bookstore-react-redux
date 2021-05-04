@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { options } from '../containers/Booksform';
 
-const CategoryFilter = ({ onSelect }) => {
-  const [category, setCategory] = useState('All');
-
-  const handleChange = (e) => {
-    // console.log(e.target.value);
-    setCategory(e.target.value);
-    onSelect(category);
-  };
-
-  return (
-    <div className="input-field">
-      <select name="category" onChange={handleChange} value={category}>
-        <option value="" disabled>
-          Select Book
+const CategoryFilter = ({ onSelect }) => (
+  <div className="input-field">
+    <select name="category" onChange={({ target }) => onSelect(target.value)}>
+      {['All', ...options].map((category) => (
+        <option value={category} key={category}>
+          {category}
         </option>
-        {['All', ...options].map((category) => (
-          <option value={category} key={Math.random()}>
-            {category}
-          </option>
-        ))}
-      </select>
-      <p>{category}</p>
-    </div>
-  );
-};
+      ))}
+    </select>
+  </div>
+);
 
 CategoryFilter.propTypes = {
   onSelect: PropTypes.func.isRequired,

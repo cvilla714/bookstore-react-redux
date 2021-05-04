@@ -1,3 +1,5 @@
+/* eslint-disable  comma-dangle */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -11,7 +13,7 @@ const INITIAL_STATE = [
   {
     id: uniqid.process(),
     name: 'Harry Potter',
-    category: 'Sci-fi',
+    category: 'Sci-Fi',
   },
   {
     id: uniqid.process(),
@@ -26,5 +28,5 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

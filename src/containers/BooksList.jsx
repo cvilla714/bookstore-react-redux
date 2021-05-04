@@ -1,3 +1,5 @@
+/* eslint-disable  comma-dangle */
+
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -12,8 +14,7 @@ const BooksList = ({ books, deleteBookAction, filterBook }) => {
   };
 
   const handleSelect = (category) => {
-    console.log(category);
-    filterBook(category, books);
+    filterBook(category);
   };
   return (
     <>
@@ -51,4 +52,6 @@ BooksList.propTypes = {
 const mapStateToProps = (state) => ({
   books: state,
 });
-export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(
+  BooksList
+);
