@@ -1,6 +1,3 @@
-/* eslint-disable  comma-dangle */
-/* eslint-disable  object-curly-newline */
-
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -9,7 +6,9 @@ import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
-const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
+const BooksList = ({
+  books, filterCategory, deleteBookAction, filterBook,
+}) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -20,7 +19,7 @@ const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
 
   const filteredBooks = () => {
     if (filterCategory !== 'All') {
-      return books.filter((book) => book.category === filterCategory);
+      return books.filter((book) => book.category.toUpperCase() === filterCategory.toUpperCase());
     }
 
     return books;
@@ -64,6 +63,7 @@ const mapStateToProps = (state) => ({
   books: state.book,
   filterCategory: state.filter,
 });
+
 export default connect(mapStateToProps, { deleteBookAction, filterBook })(
-  BooksList
+  BooksList,
 );
