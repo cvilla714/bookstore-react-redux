@@ -1,6 +1,6 @@
 import { CHANGE_FILTER } from '../actions/types';
 
-const filterReducer = (state = [], action) => {
+const filterReducer = (state = 'All', action) => {
   //   state = [...action.payload.books];
   switch (action.type) {
     case CHANGE_FILTER:
@@ -8,8 +8,6 @@ const filterReducer = (state = [], action) => {
       return action.payload;
 
     default:
-      console.log(state);
-
       return state;
   }
 };
