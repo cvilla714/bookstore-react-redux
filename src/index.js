@@ -18,7 +18,7 @@ const INITIAL_STATE = [
   {
     id: uniqid.process(),
     name: 'Star Trek',
-    category: 'Sci-fi',
+    category: 'Sci-Fi',
   },
 ];
 

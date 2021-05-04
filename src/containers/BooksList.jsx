@@ -20,6 +20,14 @@ const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
     filterBook(category);
   };
 
+  const filteredBooks = () => {
+    if (filterCategory !== 'All') {
+      return books.filter((book) => book.category === filterCategory);
+    }
+
+    return books;
+  };
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -31,7 +39,7 @@ const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
           </tr>
         </thead>
         <tbody>
-          {books.book.map((book) => (
+          {filteredBooks().map((book) => (
             <Book
               id={book.id}
               key={book.id}
@@ -48,14 +56,14 @@ const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
 };
 
 BooksList.propTypes = {
-  books: PropTypes.objectOf(Array).isRequired,
+  books: PropTypes.arrayOf(Object).isRequired,
   deleteBookAction: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
   filterCategory: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  books: state,
+  books: state.book,
   filterCategory: state.filter,
 });
 export default connect(mapStateToProps, { deleteBookAction, filterBook })(
