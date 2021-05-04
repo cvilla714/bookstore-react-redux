@@ -3,12 +3,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import Book from '../components/Book';
-import { deleteBookAction } from '../actions/index';
+import { deleteBookAction, filterBook } from '../actions/index';
+import CategoryFilter from '../components/CategoryFilter';
 
-const BooksList = ({ books, deleteBookAction }) => {
+const BooksList = ({
+  books, filterCategory, deleteBookAction, filterBook,
+}) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
+
+  const handleSelect = (category) => {
+    filterBook(category);
+  };
+
+  const filteredBooks = () => {
+    if (filterCategory !== 'All') {
+      return books.filter((book) => book.category.toUpperCase() === filterCategory.toUpperCase());
+    }
+
+    return books;
+  };
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -20,7 +36,7 @@ const BooksList = ({ books, deleteBookAction }) => {
           </tr>
         </thead>
         <tbody>
-          {books.book.map((book) => (
+          {filteredBooks().map((book) => (
             <Book
               id={book.id}
               key={book.id}
@@ -31,16 +47,23 @@ const BooksList = ({ books, deleteBookAction }) => {
           ))}
         </tbody>
       </Table>
+      <CategoryFilter onSelect={handleSelect} />
     </>
   );
 };
 
 BooksList.propTypes = {
-  books: PropTypes.objectOf(Array).isRequired,
+  books: PropTypes.arrayOf(Object).isRequired,
   deleteBookAction: PropTypes.func.isRequired,
+  filterBook: PropTypes.func.isRequired,
+  filterCategory: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  books: state,
+  books: state.book,
+  filterCategory: state.filter,
 });
-export default connect(mapStateToProps, { deleteBookAction })(BooksList);
+
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(
+  BooksList,
+);

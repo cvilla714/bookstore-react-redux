@@ -6,22 +6,14 @@ import { createBookAction } from '../actions';
 
 const uniqid = require('uniqid');
 
+export const options = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+
 const Booksform = ({ createBook }) => {
   const [info, setInfo] = useState({
     id: uniqid.process(),
     name: '',
     category: '',
   });
-
-  const options = [
-    'Action',
-    'Biography',
-    'History',
-    'Horror',
-    'Kids',
-    'Learning',
-    'Sci-Fi',
-  ];
 
   const handleChange = ({ target }) => {
     setInfo((prevInfo) => ({
@@ -45,21 +37,11 @@ const Booksform = ({ createBook }) => {
       <form action="" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title
-          <input
-            type="text"
-            id="title"
-            name="name"
-            onChange={handleChange}
-            value={info.name}
-          />
+          <input type="text" id="title" name="name" onChange={handleChange} value={info.name} />
         </label>
         <div className="row">
           <div className="input-field">
-            <select
-              name="category"
-              onChange={handleChange}
-              value={info.category}
-            >
+            <select name="category" onChange={handleChange} value={info.category}>
               <option value="" disabled>
                 Select Book
               </option>
