@@ -1,4 +1,5 @@
 /* eslint-disable  comma-dangle */
+/* eslint-disable  object-curly-newline */
 
 import { connect } from 'react-redux';
 import React from 'react';
@@ -8,7 +9,9 @@ import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
-const BooksList = ({ books, deleteBookAction, filterBook }) => {
+const BooksList = ({ books, filterCategory, deleteBookAction, filterBook }) => {
+  console.log(filterCategory);
+
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -16,6 +19,7 @@ const BooksList = ({ books, deleteBookAction, filterBook }) => {
   const handleSelect = (category) => {
     filterBook(category);
   };
+
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -47,10 +51,12 @@ BooksList.propTypes = {
   books: PropTypes.objectOf(Array).isRequired,
   deleteBookAction: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
+  filterCategory: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state,
+  filterCategory: state.filter,
 });
 export default connect(mapStateToProps, { deleteBookAction, filterBook })(
   BooksList
