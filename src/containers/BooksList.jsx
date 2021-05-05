@@ -7,7 +7,13 @@ import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import Search from './Search';
 
-const BooksList = ({ books, filterCategory, deleteBookAction, filterBook, search }) => {
+const BooksList = ({
+  books,
+  filterCategory,
+  deleteBookAction,
+  filterBook,
+  search,
+}) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -34,31 +40,11 @@ const BooksList = ({ books, filterCategory, deleteBookAction, filterBook, search
           id={book.id}
           key={book.id}
           name={book.name}
+          author={book.author}
           category={book.category}
           onDelete={handleDelete}
         />
       ))}
-
-      {/* <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredBooks().map((book) => (
-            <Book
-              id={book.id}
-              key={book.id}
-              name={book.name}
-              category={book.category}
-              onDelete={handleDelete}
-            />
-          ))}
-        </tbody>
-      </Table> */}
     </>
   );
 };
@@ -77,4 +63,6 @@ const mapStateToProps = (state) => ({
   search: state.search,
 });
 
-export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(
+  BooksList,
+);
