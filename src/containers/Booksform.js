@@ -23,7 +23,7 @@ const Booksform = ({ createBook }) => {
     category: '',
     chapters: 0,
     currentChapter: 0,
-    authors: '',
+    author: '',
     chapterTitle: '',
   });
 
