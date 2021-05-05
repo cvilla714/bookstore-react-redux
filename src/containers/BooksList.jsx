@@ -2,18 +2,12 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+
 import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import Search from './Search';
 
-const BooksList = ({
-  books,
-  filterCategory,
-  deleteBookAction,
-  filterBook,
-  search,
-}) => {
+const BooksList = ({ books, filterCategory, deleteBookAction, filterBook, search }) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -35,7 +29,17 @@ const BooksList = ({
   return (
     <>
       <Search handleSelect={handleSelect} />
-      <Table striped bordered hover size="sm">
+      {filteredBooks().map((book) => (
+        <Book
+          id={book.id}
+          key={book.id}
+          name={book.name}
+          category={book.category}
+          onDelete={handleDelete}
+        />
+      ))}
+
+      {/* <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>ID</th>
@@ -54,7 +58,7 @@ const BooksList = ({
             />
           ))}
         </tbody>
-      </Table>
+      </Table> */}
     </>
   );
 };
@@ -73,6 +77,4 @@ const mapStateToProps = (state) => ({
   search: state.search,
 });
 
-export default connect(mapStateToProps, { deleteBookAction, filterBook })(
-  BooksList,
-);
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);

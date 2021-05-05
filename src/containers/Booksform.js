@@ -6,15 +6,7 @@ import { createBookAction } from '../actions';
 
 const uniqid = require('uniqid');
 
-export const options = [
-  'Action',
-  'Biography',
-  'History',
-  'Horror',
-  'Kids',
-  'Learning',
-  'Sci-Fi',
-];
+export const options = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
 const Booksform = ({ createBook }) => {
   const [info, setInfo] = useState({
@@ -74,7 +66,7 @@ const Booksform = ({ createBook }) => {
                 Category
               </option>
               {options.map((category) => (
-                <option value={category} key={Math.random()}>
+                <option value={category} key={category}>
                   {category}
                 </option>
               ))}
