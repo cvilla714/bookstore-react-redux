@@ -7,7 +7,10 @@ function App() {
   return (
     <div className="App">
       <BooksList />
-      <BooksForm />
+      <div className="container-fluid">
+        <h1>ADD A NEW BOOK</h1>
+        <BooksForm />
+      </div>
     </div>
   );
 }

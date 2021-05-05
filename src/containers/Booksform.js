@@ -21,8 +21,10 @@ const Booksform = ({ createBook }) => {
     id: uniqid.process(),
     name: '',
     category: '',
-    chapter: '',
-    currentChapter: '',
+    chapter: 0,
+    currentChapter: 0,
+    author: '',
+    chapterTitle: '',
   });
 
   const handleChange = ({ target }) => {
@@ -39,33 +41,37 @@ const Booksform = ({ createBook }) => {
       id: uniqid.process(),
       name: '',
       category: '',
-      chapter: '',
-      currentChapter: '',
+      chapter: 0,
+      currentChapter: 0,
+      author: '',
+      chapterTitle: '',
     });
   };
 
   return (
-    <div>
+    <div className="">
       <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title
-          <input
-            type="text"
-            id="title"
-            name="name"
-            onChange={handleChange}
-            value={info.name}
-          />
-        </label>
         <div className="row">
-          <div className="input-field">
+          <label htmlFor="title" className="form-label">
+            Title
+            <input
+              type="text"
+              id="title"
+              name="name"
+              className="ml-2"
+              onChange={handleChange}
+              value={info.name}
+            />
+          </label>
+          <div>
             <select
               name="category"
+              className="form-select p-1 ml-2"
               onChange={handleChange}
               value={info.category}
             >
               <option value="" disabled>
-                Select Book
+                Category
               </option>
               {options.map((category) => (
                 <option value={category} key={Math.random()}>
@@ -74,30 +80,54 @@ const Booksform = ({ createBook }) => {
               ))}
             </select>
           </div>
+          <label htmlFor="title" className="form-label ml-2">
+            Chapter
+            <input
+              type="number"
+              id="chapter"
+              name="chapter"
+              className="ml-2"
+              onChange={handleChange}
+              value={info.chapter}
+            />
+          </label>
+          <label htmlFor="title" className="form-label ml-2">
+            currentChapter
+            <input
+              type="number"
+              id="currentChapter"
+              className="ml-2"
+              name="currentChapter"
+              onChange={handleChange}
+              value={info.currentChapter}
+            />
+          </label>
+          <label htmlFor="chapterTitle" className="form-label ml-2">
+            Chapter title
+            <input
+              type="text"
+              id="chapterTitle"
+              className="ml-2"
+              name="chapterTitle"
+              onChange={handleChange}
+              value={info.chapterTitle}
+            />
+          </label>
+          <label htmlFor="author" className="form-label ml-2">
+            Author
+            <input
+              type="text"
+              id="author"
+              className="ml-2"
+              name="author"
+              onChange={handleChange}
+              value={info.author}
+            />
+          </label>
+          <button type="submit" className="btn-primary ml-2">
+            Add Book
+          </button>
         </div>
-        <label htmlFor="title">
-          Chapter
-          <input
-            type="text"
-            id="chapter"
-            name="chapter"
-            onChange={handleChange}
-            value={info.chapter}
-          />
-        </label>
-        <label htmlFor="title">
-          currentChapter
-          <input
-            type="text"
-            id="currentChapter"
-            name="currentChapter"
-            onChange={handleChange}
-            value={info.currentChapter}
-          />
-        </label>
-        <button type="submit" className="btn-primary">
-          Add Book
-        </button>
       </form>
     </div>
   );
