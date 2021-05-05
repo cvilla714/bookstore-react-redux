@@ -7,7 +7,13 @@ import Book from '../components/Book';
 import { deleteBookAction, filterBook } from '../actions/index';
 import Search from './Search';
 
-const BooksList = ({ books, filterCategory, deleteBookAction, filterBook, search }) => {
+const BooksList = ({
+  books,
+  filterCategory,
+  deleteBookAction,
+  filterBook,
+  search,
+}) => {
   const handleDelete = (id) => {
     deleteBookAction(id);
   };
@@ -67,4 +73,6 @@ const mapStateToProps = (state) => ({
   search: state.search,
 });
 
-export default connect(mapStateToProps, { deleteBookAction, filterBook })(BooksList);
+export default connect(mapStateToProps, { deleteBookAction, filterBook })(
+  BooksList,
+);
