@@ -6,13 +6,23 @@ import { createBookAction } from '../actions';
 
 const uniqid = require('uniqid');
 
-export const options = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+export const options = [
+  'Action',
+  'Biography',
+  'History',
+  'Horror',
+  'Kids',
+  'Learning',
+  'Sci-Fi',
+];
 
 const Booksform = ({ createBook }) => {
   const [info, setInfo] = useState({
     id: uniqid.process(),
     name: '',
     category: '',
+    chapter: '',
+    currentChapter: '',
   });
 
   const handleChange = ({ target }) => {
@@ -29,6 +39,8 @@ const Booksform = ({ createBook }) => {
       id: uniqid.process(),
       name: '',
       category: '',
+      chapter: '',
+      currentChapter: '',
     });
   };
 
@@ -37,11 +49,21 @@ const Booksform = ({ createBook }) => {
       <form action="" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title
-          <input type="text" id="title" name="name" onChange={handleChange} value={info.name} />
+          <input
+            type="text"
+            id="title"
+            name="name"
+            onChange={handleChange}
+            value={info.name}
+          />
         </label>
         <div className="row">
           <div className="input-field">
-            <select name="category" onChange={handleChange} value={info.category}>
+            <select
+              name="category"
+              onChange={handleChange}
+              value={info.category}
+            >
               <option value="" disabled>
                 Select Book
               </option>
@@ -53,6 +75,26 @@ const Booksform = ({ createBook }) => {
             </select>
           </div>
         </div>
+        <label htmlFor="title">
+          Chapter
+          <input
+            type="text"
+            id="chapter"
+            name="chapter"
+            onChange={handleChange}
+            value={info.chapter}
+          />
+        </label>
+        <label htmlFor="title">
+          currentChapter
+          <input
+            type="text"
+            id="currentChapter"
+            name="currentChapter"
+            onChange={handleChange}
+            value={info.currentChapter}
+          />
+        </label>
         <button type="submit" className="btn-primary">
           Add Book
         </button>
