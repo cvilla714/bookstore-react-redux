@@ -21,9 +21,9 @@ const Booksform = ({ createBook }) => {
     id: uniqid.process(),
     name: '',
     category: '',
-    chapter: 0,
+    chapters: 0,
     currentChapter: 0,
-    author: '',
+    authors: '',
     chapterTitle: '',
   });
 
@@ -41,7 +41,7 @@ const Booksform = ({ createBook }) => {
       id: uniqid.process(),
       name: '',
       category: '',
-      chapter: 0,
+      chapters: 0,
       currentChapter: 0,
       author: '',
       chapterTitle: '',
@@ -81,18 +81,18 @@ const Booksform = ({ createBook }) => {
             </select>
           </div>
           <label htmlFor="title" className="form-label ml-2">
-            Chapter
+            Chapters
             <input
               type="number"
               id="chapter"
-              name="chapter"
+              name="chapters"
               className="ml-2"
               onChange={handleChange}
               value={info.chapter}
             />
           </label>
           <label htmlFor="title" className="form-label ml-2">
-            currentChapter
+            Current chapter
             <input
               type="number"
               id="currentChapter"
