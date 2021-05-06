@@ -43,6 +43,9 @@ const BooksList = ({
             name={book.name}
             author={book.author}
             category={book.category}
+            chapters={book.chapters}
+            currentChapter={book.currentChapter}
+            chapterTitle={book.chapterTitle}
             onDelete={handleDelete}
           />
         ))}
