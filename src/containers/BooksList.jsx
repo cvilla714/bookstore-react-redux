@@ -24,7 +24,13 @@ const BooksList = ({
 
   const filteredBooks = () => {
     if (filterCategory !== 'All') {
-      return books.filter((book) => book.category === filterCategory);
+      const filteredByCategory = books.filter(
+        (book) => book.category === filterCategory,
+      );
+      if (search !== '') {
+        return filteredByCategory.filter((book) => book.name.includes(search));
+      }
+      return filteredByCategory;
     }
     if (search !== '') {
       return books.filter((book) => book.name.includes(search));
