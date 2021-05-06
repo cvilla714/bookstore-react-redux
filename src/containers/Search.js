@@ -17,85 +17,35 @@ const Search = ({ searchBook, handleSelect }) => {
 
   return (
     <nav>
-      <div className="nav-wrapper white">
-        <div className="row">
-          <div className="col s12 m4 l2">
-            <a href="!#" className="brand-logo blue-text darken-2">
-              BookStoore CMS
-            </a>
+      <div className="nav-wrapper row white">
+        <div className="col s7">
+          <a href="!#" className="brand-logo blue-text darken-2">
+            BookStore CMS
+          </a>
+        </div>
+        <div className="nav-right col s5 row">
+          <div className="col s6">
+            <CategoryFilter onSelect={handleSelect} />
           </div>
-          <div className="col s12 m4 l5">
-            <ul id="nav-mobile" className="left hide-on-med-and-down">
-              <li>
-                <a href="sass.html" className="brown-text">
-                  Books
-                </a>
-              </li>
-              <li>
-                <a href="badges.html blue" className="brown-text text-lighten-3">
-                  Categories
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col s12 m4 l5">
-            {' '}
-            <div className="row">
-              <div className="col m6 l6">
-                <div className="input-field moving-left">
-                  <label className="active" htmlFor="first_name2">
-                    <input
-                      id="first_name2"
-                      type="search"
-                      name="active"
-                      className="validate moreroom"
-                      placeholder="Search by book name"
-                      ref={text}
-                      onChange={onChange}
-                    />
-                  </label>
-                </div>
-              </div>
-              <div className="col m6 l6">
-                <div className="moving-left">
-                  <CategoryFilter onSelect={handleSelect} />
-                </div>
-              </div>
-            </div>
-          </div>
+          <label className="active col s6" htmlFor="first_name2">
+            <input
+              id="first_name2"
+              type="search"
+              name="active"
+              className="validate moreroom"
+              placeholder="Search by book name"
+              ref={text}
+              onChange={onChange}
+            />
+          </label>
         </div>
       </div>
     </nav>
-
-  // <Navbar bg="light" expand="lg">
-  //   <Navbar.Brand href="#home">BookStoore CMS</Navbar.Brand>
-  //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  //   <Navbar.Collapse id="basic-navbar-nav">
-  //     <Nav.Link className="mr-auto">
-  //       <Nav.Link href="#home">Books</Nav.Link>
-  //       <Nav.Link href="#link">Categories</Nav.Link>
-  //     </Nav.Link>
-  //     <Form inline>
-  //       <FormControl
-  //         type="search"
-  //         placeholder="Search Book"
-  //         className="mr-sm-2"
-  //         ref={text}
-  //         onChange={onChange}
-  //       />
-  //       <CategoryFilter onSelect={handleSelect} />
-  //     </Form>
-  //   </Navbar.Collapse>
-  // </Navbar>
   );
 };
 Search.propTypes = {
   searchBook: PropTypes.func.isRequired,
   handleSelect: PropTypes.func.isRequired,
 };
-
-// const mapStateToProps = (state) => ({
-//   search: state.search,
-// });
 
 export default connect(null, { searchBook })(Search);
