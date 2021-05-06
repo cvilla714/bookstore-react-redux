@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -65,9 +63,17 @@ const Booksform = ({ createBook }) => {
   };
 
   const handleChange = ({ target }) => {
+    let numberValidation = 1;
+    if (
+      (target.name === 'chapters' || target.name === 'currentChapter') &&
+      target.value < 1
+    ) {
+      numberValidation = 1;
+    } else numberValidation = target.value;
+
     setInfo((prevInfo) => ({
       ...prevInfo,
-      [target.name]: target.value,
+      [target.name]: numberValidation,
     }));
   };
 
