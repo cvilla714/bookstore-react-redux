@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
