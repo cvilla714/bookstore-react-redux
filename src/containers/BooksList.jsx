@@ -35,16 +35,18 @@ const BooksList = ({
   return (
     <>
       <Search handleSelect={handleSelect} />
-      {filteredBooks().map((book) => (
-        <Book
-          id={book.id}
-          key={book.id}
-          name={book.name}
-          author={book.author}
-          category={book.category}
-          onDelete={handleDelete}
-        />
-      ))}
+      <div className="container">
+        {filteredBooks().map((book) => (
+          <Book
+            id={book.id}
+            key={book.id}
+            name={book.name}
+            author={book.author}
+            category={book.category}
+            onDelete={handleDelete}
+          />
+        ))}
+      </div>
     </>
   );
 };
