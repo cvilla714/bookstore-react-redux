@@ -21,8 +21,8 @@ const Booksform = ({ createBook }) => {
     id: uniqid.process(),
     name: '',
     category: '',
-    chapters: 0,
-    currentChapter: 0,
+    chapters: 1,
+    currentChapter: 1,
     author: '',
     chapterTitle: '',
   });
@@ -62,6 +62,7 @@ const Booksform = ({ createBook }) => {
                 className="ml-2"
                 onChange={handleChange}
                 value={info.name}
+                required
               />
             </label>
             <div className="col s4">
@@ -89,7 +90,8 @@ const Booksform = ({ createBook }) => {
                 name="chapters"
                 className="ml-2"
                 onChange={handleChange}
-                value={info.chapter}
+                value={info.chapters}
+                required
               />
             </label>
           </div>
@@ -103,6 +105,7 @@ const Booksform = ({ createBook }) => {
                 name="currentChapter"
                 onChange={handleChange}
                 value={info.currentChapter}
+                required
               />
             </label>
             <label htmlFor="chapterTitle" className="form-label ml-2 col s4">
@@ -114,6 +117,7 @@ const Booksform = ({ createBook }) => {
                 name="chapterTitle"
                 onChange={handleChange}
                 value={info.chapterTitle}
+                required
               />
             </label>
             <label htmlFor="author" className="form-label ml-2 col s4">
@@ -125,6 +129,7 @@ const Booksform = ({ createBook }) => {
                 name="author"
                 onChange={handleChange}
                 value={info.author}
+                required
               />
             </label>
           </div>
