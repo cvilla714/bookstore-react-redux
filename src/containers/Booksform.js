@@ -5,6 +5,23 @@ import { createBookAction } from '../actions';
 
 const uniqid = require('uniqid');
 
+const initialInfo = {
+  id: uniqid.process(),
+  name: '',
+  category: '',
+  chapters: 1,
+  currentChapter: 1,
+  author: '',
+  chapterTitle: '',
+};
+
+const initialErrors = {
+  name: '',
+  category: '',
+  author: '',
+  chapterTitle: '',
+};
+
 export const options = [
   'Action',
   'Biography',
@@ -16,35 +33,57 @@ export const options = [
 ];
 
 const Booksform = ({ createBook }) => {
-  const [info, setInfo] = useState({
-    id: uniqid.process(),
-    name: '',
-    category: '',
-    chapters: 1,
-    currentChapter: 1,
-    author: '',
-    chapterTitle: '',
-  });
+  const [errors, setErrors] = useState(initialErrors);
+
+  const [info, setInfo] = useState(initialInfo);
+
+  const validate = () => {
+    let name = '';
+    let category = '';
+    let author = '';
+    let chapterTitle = '';
+
+    if (!info.name) name = 'Empty name not allowed';
+    if (!info.category) category = 'Empty category not allowed';
+    if (!info.author) author = 'Empty author not allowed';
+    if (!info.chapterTitle) chapterTitle = 'Empty Chapter title not allowed';
+
+    if (name || category || chapterTitle || author) {
+      setErrors((prev) => ({
+        ...prev,
+        name,
+        category,
+        author,
+        chapterTitle,
+      }));
+      return false;
+    }
+
+    return true;
+  };
 
   const handleChange = ({ target }) => {
+    let numberValidation = 1;
+    if (
+      (target.name === 'chapters' || target.name === 'currentChapter') &&
+      target.value < 1
+    ) {
+      numberValidation = 1;
+    } else numberValidation = target.value;
+
     setInfo((prevInfo) => ({
       ...prevInfo,
-      [target.name]: target.value,
+      [target.name]: numberValidation,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBook(info);
-    setInfo({
-      id: uniqid.process(),
-      name: '',
-      category: '',
-      chapters: 0,
-      currentChapter: 0,
-      author: '',
-      chapterTitle: '',
-    });
+    const isValid = validate();
+    if (isValid) {
+      createBook(info);
+      setInfo(initialInfo);
+    }
   };
 
   return (
@@ -61,8 +100,8 @@ const Booksform = ({ createBook }) => {
                 className="ml-2"
                 onChange={handleChange}
                 value={info.name}
-                required
               />
+              <span>{errors.name}</span>
             </label>
             <div className="col s4">
               <select
@@ -90,7 +129,6 @@ const Booksform = ({ createBook }) => {
                 className="ml-2"
                 onChange={handleChange}
                 value={info.chapters}
-                required
               />
             </label>
           </div>
@@ -104,7 +142,6 @@ const Booksform = ({ createBook }) => {
                 name="currentChapter"
                 onChange={handleChange}
                 value={info.currentChapter}
-                required
               />
             </label>
             <label htmlFor="chapterTitle" className="form-label ml-2 col s4">
@@ -116,8 +153,8 @@ const Booksform = ({ createBook }) => {
                 name="chapterTitle"
                 onChange={handleChange}
                 value={info.chapterTitle}
-                required
               />
+              <span>{errors.chapterTitle}</span>
             </label>
             <label htmlFor="author" className="form-label ml-2 col s4">
               Author
@@ -128,9 +165,9 @@ const Booksform = ({ createBook }) => {
                 name="author"
                 onChange={handleChange}
                 value={info.author}
-                required
               />
             </label>
+            <span>{errors.author}</span>
           </div>
           <button
             type="submit"
