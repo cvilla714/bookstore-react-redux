@@ -15,6 +15,7 @@ const INITIAL_STATE = [
     chapters: 17,
     currentChapter: 2,
     author: 'J.K Rowling',
+    chapterTitle: 'Love & Hate',
   },
   {
     id: uniqid.process(),
@@ -23,6 +24,7 @@ const INITIAL_STATE = [
     chapters: 19,
     currentChapter: 7,
     author: 'J. R. R. Tolkien',
+    chapterTitle: 'Reaching for the clouds',
   },
 ];
 
