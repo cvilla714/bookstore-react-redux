@@ -59,14 +59,16 @@ const Booksform = ({ createBook }) => {
       return false;
     }
 
+    setErrors(initialErrors);
+
     return true;
   };
 
   const handleChange = ({ target }) => {
     let numberValidation = 1;
     if (
-      (target.name === 'chapters' || target.name === 'currentChapter') &&
-      target.value < 1
+      (target.name === 'chapters' || target.name === 'currentChapter')
+      && target.value < 1
     ) {
       numberValidation = 1;
     } else numberValidation = target.value;
