@@ -10,11 +10,13 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <div className="App">
+    <div className="grey lighten-4">
       <BooksList />
-      <div className="container-fluid">
-        <h1>ADD A NEW BOOK</h1>
-        <BooksForm />
+      <div className="container">
+        <div className="container-fluid">
+          <h1>ADD A NEW BOOK</h1>
+          <BooksForm />
+        </div>
       </div>
     </div>
   );
