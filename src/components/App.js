@@ -10,7 +10,7 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <div className="grey lighten-4">
+    <div>
       <BooksList />
       <div className="container">
         <div className="container-fluid">
