@@ -18,10 +18,24 @@ const Search = ({ searchBook, handleSelect }) => {
   return (
     <nav>
       <div className="nav-wrapper row white">
-        <div className="col s7">
-          <a href="!#" className="brand-logo blue-text darken-2">
-            BookStore CMS
-          </a>
+        <div className="col s7 row">
+          <div className="col s3">
+            <a href="!#" className="brand-logo blue-text darken-2 ">
+              BookStore CMS
+            </a>
+          </div>
+          <ul id="nav-mobile" className="hide-on-med-and-down">
+            <li>
+              <a href="sass.html" className="black-text">
+                Books
+              </a>
+            </li>
+            <li>
+              <a href="collapsible.html" className="black-text">
+                Categories
+              </a>
+            </li>
+          </ul>
         </div>
         <div className="nav-right col s5 row">
           <div className="col s6">
