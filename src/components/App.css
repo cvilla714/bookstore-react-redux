@@ -68,3 +68,10 @@ body {
 .card {
   margin-top: 2rem !important;
 }
+
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 0 !important;
+    transform: translateX(0) !important;
+  }
+}
