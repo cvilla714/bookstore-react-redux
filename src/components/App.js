@@ -14,7 +14,7 @@ const App = () => {
       <BooksList />
       <div className="container">
         <div className="container-fluid">
-          <h1>ADD A NEW BOOK</h1>
+          <h1 className="main-title">ADD A NEW BOOK</h1>
           <BooksForm />
         </div>
       </div>
