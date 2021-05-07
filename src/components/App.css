@@ -67,11 +67,26 @@ body {
 
 .card {
   margin-top: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.update-btn {
+  margin-bottom: 0.75rem;
 }
 
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     left: 0 !important;
     transform: translateX(0) !important;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .card {
+    flex-direction: row;
+    justify-content: initial;
+    align-items: center;
+    padding: 1.5rem;
   }
 }

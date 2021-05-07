@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -15,8 +16,8 @@ const List = ({
 }) => {
   const percentageread = Math.floor((currentChapter / chapters) * 100);
   return (
-    <div className="card z-depth-2 row .card-fixer valign-wrapper">
-      <div className="col s7">
+    <div className="card z-depth-2 row .card-fixer">
+      <div className="col s12 m7">
         <div className="card-info">
           <h6 className="header grey-text text-lighten-1">{category}</h6>
           <h5 className="header grey-text text-darken-4">{name}</h5>
@@ -39,7 +40,7 @@ const List = ({
           </a>
         </div>
       </div>
-      <div className="col s5 row">
+      <div className="col s12 m5 row">
         <div className="col s6">
           <div style={{ width: 100, height: 100 }}>
             <CircularProgressbar
@@ -50,10 +51,7 @@ const List = ({
         </div>
         <div className="col s6">
           <p>{chapterTitle}</p>
-          <p>
-            Chapter
-            <span>{currentChapter}</span>
-          </p>
+          <p>{`Chapter ${currentChapter}`}</p>
           <button className="waves-effect waves-light btn blue" type="button">
             UPDATE PROGRESS
           </button>
