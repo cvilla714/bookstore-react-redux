@@ -12,11 +12,19 @@ const INITIAL_STATE = [
     id: uniqid.process(),
     name: 'Harry Potter',
     category: 'Sci-Fi',
+    chapters: 17,
+    currentChapter: 2,
+    author: 'J.K Rowling',
+    chapterTitle: 'Love & Hate',
   },
   {
     id: uniqid.process(),
-    name: 'Star Trek',
+    name: 'The Lord of the rings',
     category: 'Sci-Fi',
+    chapters: 19,
+    currentChapter: 7,
+    author: 'J. R. R. Tolkien',
+    chapterTitle: 'Reaching for the clouds',
   },
 ];
 
